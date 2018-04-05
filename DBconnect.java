@@ -19,11 +19,11 @@ public class DBconnect {
         }
     }
 
-    public void getData()
+    public void getData(String flightID)
     {
         try{
 
-            String query ="select * from users";
+            String query ="select * from "+flightID;
             rs =st.executeQuery(query);
             System.out.println("Records from the Database:");
             while(rs.next())

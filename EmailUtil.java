@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javamail2;
+package sample;
 
 /**
  *
@@ -28,40 +28,40 @@ import javax.mail.internet.MimeMultipart;
 
 public class EmailUtil {
 
-	/**
-	 * Utility method to send simple HTML email
-	 * @param session
-	 * @param toEmail
-	 * @param subject
-	 * @param body
-	 */
-	public static void sendEmail(Session session, String toEmail, String subject, String body){
-		try
-	    {
-	      MimeMessage msg = new MimeMessage(session);
-	      //set message headers
-	      msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
-	      msg.addHeader("format", "flowed");
-	      msg.addHeader("Content-Transfer-Encoding", "8bit");
+    /**
+     * Utility method to send simple HTML email
+     * @param session
+     * @param toEmail
+     * @param subject
+     * @param body
+     */
+    public static void sendEmail(Session session, String toEmail, String subject, String body){
+        try
+        {
+            MimeMessage msg = new MimeMessage(session);
+            //set message headers
+            msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
+            msg.addHeader("format", "flowed");
+            msg.addHeader("Content-Transfer-Encoding", "8bit");
 
-	      msg.setFrom(new InternetAddress("hataswankighata@gmail.com", "LUNDFAKIR"));
+            msg.setFrom(new InternetAddress("gauri.nigam@sitpune.edu.in", "Chatrapati Shivaji International Airport"));
 
-	      msg.setReplyTo(InternetAddress.parse("naagindancekarkedikhaopls@gmail.com", false));
+            msg.setReplyTo(InternetAddress.parse("no-reply@airport.com", false));
 
-	      msg.setSubject(subject, "UTF-8");
+            msg.setSubject(subject, "UTF-8");
 
-	      msg.setText(body, "UTF-8");
+            msg.setText(body, "UTF-8");
 
-	      msg.setSentDate(new Date());
+            msg.setSentDate(new Date());
 
-	      msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false));
-	      System.out.println("Message is ready");
-    	  Transport.send(msg);  
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false));
+            System.out.println("Message is ready");
+            Transport.send(msg);
 
-	      System.out.println("EMail Sent Successfully!!");
-	    }
-	    catch (Exception e) {
-	      e.printStackTrace();
-	    }
-	}
+            System.out.println("EMail Sent Successfully!!");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
