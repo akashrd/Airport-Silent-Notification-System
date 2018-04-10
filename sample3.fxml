@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <TextArea fx:id="NotifyText" layoutX="19.0" layoutY="162.0" prefHeight="126.0" prefWidth="359.0" promptText="Enter Your Message" />
+        <Label alignment="CENTER" layoutX="124.0" layoutY="37.0" prefHeight="27.0" prefWidth="147.0" text="Manual Problems" textAlignment="CENTER" textFill="#2620c6" />
+        <TextArea fx:id="NotifyFlight" layoutX="102.0" layoutY="95.0" prefHeight="27.0" prefWidth="180.0" promptText="Flight Number" />
+        <Button fx:id="BtnManualNotify" layoutX="173.0" layoutY="317.0" mnemonicParsing="false" onAction="#manualResolve" text="Notify" />
+    </children>
+</AnchorPane>
