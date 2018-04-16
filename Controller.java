@@ -1,15 +1,13 @@
 package sample;
 
+import com.mysql.jdbc.log.NullLogger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,16 +21,18 @@ public class Controller implements Initializable {
     public TextField UserID;
     public PasswordField PassField;
     public Label LblDispMsg;
-    public TextField NotifyFlight;
-    public TextField NotifyText;
-    public Button BtnManualNotify;
-    private Problem p1;
+
+
+
+    public String FID;
+    public String Statement;
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //code to initialize usernames and passwords arraylist from the database
+
 
     }
 
@@ -74,9 +74,6 @@ public class Controller implements Initializable {
         if(flag==0 && flag1==0) {
             LblDispMsg.setText("Logged in successfully");
 
-//            Main obj=new Main();
-//            obj.sceneBanao("sample2.fxml");
-
             Stage window=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             Parent root1= null;
         try {
@@ -84,61 +81,69 @@ public class Controller implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene scene2= new Scene(root1, 400, 400);
+        FXMLLoader Loader=new FXMLLoader();
+        Controller2 sceneTwo= new Controller2();
+
+
+        Scene scene2= new Scene(root1, 600, 600);
             window.setScene(scene2);
             window.show();
 
-            Airport objAir=new Airport();
-            objAir.initializeData();
-            p1=new Problem();
-            p1.generateProblem(objAir);
 
 
         }
 
-
-
-
     }
 
-    public void SignOut(ActionEvent actionEvent)throws Exception{
+//    public void SignOut(ActionEvent actionEvent)throws Exception{
+//
+//
+//        Parent root3= FXMLLoader.load(getClass().getResource("sample.fxml"));
+//        Scene scene1=new Scene(root3, 400, 400);
+//
+//        Stage window=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+//
+//        window.setScene(scene1);
+//        window.show();
+//    }
+//
+//    public void ProblemPage(ActionEvent actionEvent)throws Exception{
+//
+//        Parent root4 = null;
+//        try
+//        {
+//            root4=FXMLLoader.load(getClass().getResource("sample3.fxml"));
+//        }
+//        catch(IOException e)
+//        {
+//            e.printStackTrace();
+//        }
+//
+//        Scene scene3 = new Scene(root4, 600, 600);
+//
+//        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+//
+//        window.setScene(scene3);
+//        window.show();
+//    }
 
 
-        Parent root3= FXMLLoader.load(getClass().getResource("sample.fxml"));
-        Scene scene1=new Scene(root3, 400, 400);
 
-        Stage window=(Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+//    public void manualResolve(ActionEvent actionEvent) {
+//        String Fid;
+//        String FlightMsg;
+//        Fid=NotifyFlight.getText();
+//        FlightMsg=NotifyText.getText();
+//        Problem p2=new Problem(FlightMsg,Fid);
+//        p2.resolveProblem(Fid,FlightMsg);
+//        //System.out.println(Fid);
+//       // System.out.println(FlightMsg);
+//    }
 
-        window.setScene(scene1);
-        window.show();
-    }
-
-    public void ProblemPage(ActionEvent actionEvent)throws Exception{
-
-        Parent root4 = FXMLLoader.load(getClass().getResource("sample3.fxml"));
-        Scene scene3 = new Scene(root4, 400, 400);
-
-        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(scene3);
-        window.show();
-    }
-
-
-
-    public void ResolveNow(ActionEvent actionEvent) {
-        p1.resolveProblem();
-
-
-    }
-
-    public void manualResolve(ActionEvent actionEvent) {
-        String Fid;
-        String FlightMsg;
-        Fid=NotifyFlight.getText();
-        FlightMsg=NotifyText.getText();
-        Problem p2=new Problem(FlightMsg, Fid);
-        p2.resolveProblem();
-    }
+//    public void ResolveNow(ActionEvent actionEvent) {
+//        System.out.println(FID);
+//        Problem p3=new Problem();
+//        p3.resolveProblem(FID, Statement);
+//    }
 }
 
