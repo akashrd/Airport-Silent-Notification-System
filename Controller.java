@@ -88,11 +88,12 @@ public class Controller implements Initializable {
         Scene scene2= new Scene(root1, 600, 600);
             window.setScene(scene2);
             window.show();
-
-
-
         }
 
+        else
+        {
+            LblDispMsg.setText("Login Unsuccessful");
+        }
     }
 
 //    public void SignOut(ActionEvent actionEvent)throws Exception{

@@ -1,6 +1,7 @@
 package sample;
 
 
+//import com.sun.rowset.internal.InsertRow;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -8,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -41,16 +43,41 @@ public class Problem {
         FlightID=F1.FlightID;
         to=F1.to;
 
+        DBconnect objt=new DBconnect();
+
         //System.out.print(FlightID);
 
         int n2=rand.nextInt(2)+0;
 
         if(n2==0){
            Statement="Your flight " + FlightID + " to " +to+ " is Cancelled. Sorry for the inconvenience caused." ;
+
+            String query="insert into problem(FlightId,Statement)" + "values(?,?)";
+            try {
+                PreparedStatement preparedStmt = objt.con.prepareStatement(query);
+                preparedStmt.setString(1, FlightID);
+                preparedStmt.setString(2, Statement);
+                preparedStmt.execute();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
         }
         else{
             Time=rand.nextInt(5)+1;
-            Statement="Your flight " + FlightID + "to "+to+" is Delayed by " +Time + " hours. Sorry for the inconvenience caused";
+            Statement="Your flight " + FlightID + " to "+to+" is Delayed by " +Time + " hours. Sorry for the inconvenience caused";
+
+            String query="insert into problem(FlightId,Statement)" + "values(?,?)";
+            try {
+                PreparedStatement preparedStmt = objt.con.prepareStatement(query);
+                preparedStmt.setString(1, FlightID);
+                preparedStmt.setString(2, Statement);
+                preparedStmt.execute();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+
         }
 
 
@@ -67,6 +94,8 @@ public class Problem {
         DBconnect obj=new DBconnect();
         EmailIDs=obj.getData(FlightID,"Email ID");
        // EmailIDs.add("akash.dholaria@sitpune.edu.in");
+
+
         System.out.println(FlightID);
        System.out.println(EmailIDs.get(0));
         JavaMail objMail=new JavaMail();

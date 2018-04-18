@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javamail2;
+package sample;
 
 /**
  *
@@ -13,7 +13,9 @@ package javamail2;
     /**
      * @param args the command line arguments
      */
-    import java.util.Properties;
+    import sample.EmailUtil;
+
+	import java.util.Properties;
 
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
@@ -55,6 +57,6 @@ public class JavaMail2 {
 
 }
 	
-}
+
     
-}
+
